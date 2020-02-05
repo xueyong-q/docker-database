@@ -28,6 +28,17 @@ services:
         networks:
             - database_app
 
+    phpmyadmin:
+        image: "phpmyadmin/phpmyadmin"
+        restart: always
+        environment:
+            - PMA_ARBITRARY=1
+            - UPLOAD_LIMIT=50M
+        ports:
+            - 8080:80
+        networks:
+            - database_app
+            
 networks: 
     database_app:
         external: true
