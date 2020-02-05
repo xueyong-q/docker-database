@@ -1,0 +1,33 @@
+version: "3"
+services:
+
+    mysql:
+        image: "mysql:5.7"
+        volumes:
+            - ./my.cnf:/etc/my.cnf
+            - ./conf:/etc/mysql/conf.d
+            - ./data:/var/lib/mysql
+
+        restart: always
+        privileged: true
+        container_name: ${MYSQL_CONTAINER_NAME}
+        environment:
+            - MYSQL_USER=${MYSQL_USER}
+            - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+            - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+
+        ports:
+            - "3306:3306"
+        networks:
+            - database_app
+
+    redis:
+        image: "redis:5"
+        restart: always
+        container_name: ${REDIS_CONTAINER_NAME}
+        networks:
+            - database_app
+
+networks: 
+    database_app:
+        external: true
