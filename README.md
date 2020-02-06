@@ -13,6 +13,8 @@ MYSQL_ROOT_PASSWORD #MySQL root 用户密码
 MYSQL_CONTAINER_NAME #MySQL实例名称  
 REDIS_CONTAINER_NAME #REDIS实例名称  
 
+>注意：MYSQL_CONTAINER_NAME 和 REDIS_CONTAINER_NAME 不能与现有的 Docker 实例名称重复，配置好实例名称后容器之间可以通过实例名称进行访问了，当然还需要在同一网络中。
+
 将以上环境变量配置完成后接下来新建一个虚拟网络，如下命令：  
 ```sh
 docker network create database_app
