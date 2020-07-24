@@ -25,6 +25,8 @@ services:
         image: "redis:5"
         restart: always
         container_name: ${REDIS_CONTAINER_NAME}
+        ports:
+            - "6379:6379"
         networks:
             - database_app
 
@@ -35,7 +37,7 @@ services:
             - PMA_ARBITRARY=1
             - UPLOAD_LIMIT=50M
         ports:
-            - 8080:80
+            - 8888:80
         networks:
             - database_app
             
