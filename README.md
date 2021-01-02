@@ -9,7 +9,7 @@
 | MySQL      | 5.7               |
 | Redis      | 5.x               |
 | PHPMyAdmin | 5.x(使用最新版本) |
->以上容器版本均可在 `docker-compose` 中修改。
+>以上容器版本均可在 `.env` 环境变量文件中修改。
 
 ## 搭建
 
@@ -17,11 +17,17 @@
 复制项目下 `.env.example` 文件为 `.env` 并配置其内容。  
 
 ```
-MYSQL_USER           # 新建MySQL用户名称  
-MYSQL_PASSWORD       # 新建MySQL用户密码  
-MYSQL_ROOT_PASSWORD  # MySQL root 用户密码  
-MYSQL_CONTAINER_NAME # MySQL实例名称  
-REDIS_CONTAINER_NAME # REDIS实例名称  
+MYSQL_IMAGE_NAME     # MYSQL 的镜像标签名称
+MYSQL_USER           # 新建 MySQL 用户名称
+MYSQL_PASSWORD       # 新建 MySQL 用户密码
+MYSQL_ROOT_PASSWORD  # MySQL root 用户密码
+MYSQL_CONTAINER_NAME # MySQL 实例名称
+
+REDIS_IMAGE_NAME     # REDIS 的镜像标签名称
+REDIS_CONTAINER_NAME # REDIS 实例名称
+
+MYADMIN_IMAGE_NAME   # phpmyadmin 的镜像标签名称
+MYADMIN_UPLOAD_LIMIT # 设置文件上传的大小
 ```
 
 >注意：MYSQL_CONTAINER_NAME 和 REDIS_CONTAINER_NAME 不能与现有的 Docker 实例名称重复，配置好实例名称后在同一网络的容器之间可以通过实例名称进行相互访问了。
@@ -31,14 +37,13 @@ REDIS_CONTAINER_NAME # REDIS实例名称
 $ docker network create database_app
 ```
 
-新建好虚拟网络后直接在本项目下运行 `docker-compose up` 命令启动容器。  
+新建好虚拟网络后直接在本项目下运行 `docker-compose up -d` 命令启动容器。  
 启动容器完毕后可以使用 `docker ps` 命令查看容器是否启动成功。    
 到此数据库已构建完成。
 
 ## 使用
 
-容器启动成功后，可以在浏览器中使用 `localhost:8888` 访问 phpMyAdmin 来管理 MySQL 数据库了。
-在 phpMyAdmin 登录页面的服务器配置项就可以使用环境变量 MYSQL_CONTAINER_NAME 的值来设置服务器地址，mysql 账号密码使用环境变量中配置的账号密码。
+容器启动成功后，可以在浏览器中使用 `localhost:8888` 访问 phpMyAdmin 来管理 MySQL 数据库了，无需账号密码登录。
 
 以下是容器映射至主机的端口：
 

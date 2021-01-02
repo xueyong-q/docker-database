@@ -2,7 +2,7 @@ version: "3"
 services:
 
     mysql:
-        image: "mysql:5.7"
+        image: ${MYSQL_IMAGE_NAME}
         volumes:
             - ./my.cnf:/etc/my.cnf
             - ./conf:/etc/mysql/conf.d
@@ -22,7 +22,7 @@ services:
             - database_app
 
     redis:
-        image: "redis:5"
+        image: ${REDIS_IMAGE_NAME}
         restart: always
         container_name: ${REDIS_CONTAINER_NAME}
         ports:
@@ -31,11 +31,14 @@ services:
             - database_app
 
     phpmyadmin:
-        image: "phpmyadmin/phpmyadmin"
+        image: ${MYADMIN_IMAGE_NAME}
         restart: always
         environment:
-            - PMA_ARBITRARY=1
-            - UPLOAD_LIMIT=50M
+            - UPLOAD_LIMIT=${MYADMIN_UPLOAD_LIMIT}
+            - PMA_HOST=${MYSQL_CONTAINER_NAME}
+            - PMA_PORT=3306
+            - PMA_USER=root
+            - PMA_PASSWORD=${MYSQL_ROOT_PASSWORD}
         ports:
             - 8888:80
         networks:
