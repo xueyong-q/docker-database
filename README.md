@@ -17,16 +17,16 @@
 复制项目下 `.env.example` 文件为 `.env` 并配置其内容。  
 
 ```
-MYSQL_IMAGE_NAME     # MYSQL 的镜像标签名称
+MYSQL_VERSION        # MYSQL 的镜像版本
 MYSQL_USER           # 新建 MySQL 用户名称
 MYSQL_PASSWORD       # 新建 MySQL 用户密码
 MYSQL_ROOT_PASSWORD  # MySQL root 用户密码
 MYSQL_CONTAINER_NAME # MySQL 实例名称
 
-REDIS_IMAGE_NAME     # REDIS 的镜像标签名称
+REDIS_VERSION        # REDIS 的镜像版本
 REDIS_CONTAINER_NAME # REDIS 实例名称
 
-MYADMIN_IMAGE_NAME   # phpmyadmin 的镜像标签名称
+MYADMIN_VERSION      # phpmyadmin 的镜像版本
 MYADMIN_UPLOAD_LIMIT # 设置文件上传的大小
 ```
 

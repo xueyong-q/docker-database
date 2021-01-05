@@ -2,7 +2,7 @@ version: "3"
 services:
 
     mysql:
-        image: ${MYSQL_IMAGE_NAME}
+        image: mysql:${MYSQL_VERSION}
         volumes:
             - ./my.cnf:/etc/my.cnf
             - ./conf:/etc/mysql/conf.d
@@ -22,7 +22,7 @@ services:
             - database_app
 
     redis:
-        image: ${REDIS_IMAGE_NAME}
+        image: redis:${REDIS_VERSION}
         restart: always
         container_name: ${REDIS_CONTAINER_NAME}
         ports:
@@ -31,7 +31,7 @@ services:
             - database_app
 
     phpmyadmin:
-        image: ${MYADMIN_IMAGE_NAME}
+        image: phpmyadmin/phpmyadmin:${MYADMIN_VERSION}
         restart: always
         environment:
             - UPLOAD_LIMIT=${MYADMIN_UPLOAD_LIMIT}
