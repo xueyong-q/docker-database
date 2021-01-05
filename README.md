@@ -8,7 +8,7 @@
 | ---------- | ----------------- |
 | MySQL      | 5.7               |
 | Redis      | 5.x               |
-| PHPMyAdmin | 5.x(使用最新版本) |
+| PHPMyAdmin | 5.x(使用最新版本) |  
 >以上容器版本均可在 `.env` 环境变量文件中修改。
 
 ## 搭建
@@ -39,7 +39,7 @@ $ docker network create database_app
 
 新建好虚拟网络后直接在本项目下运行 `docker-compose up -d` 命令启动容器。  
 启动容器完毕后可以使用 `docker ps` 命令查看容器是否启动成功。    
-到此数据库已构建完成。
+到此数据库已构建完成。  
 
 ## 使用
 
@@ -51,7 +51,7 @@ $ docker network create database_app
 | ---------- | -------- |
 | MySQL      | 3306     |
 | Redis      | 6379     |
-| PHPMyAdmin | 8888     |
+| PHPMyAdmin | 8888     |  
 可通过访问主机的以上端口来访问对应的服务。
 
 由于以上容器设置了 restart 为 always，所以在每次 Docker 启动后这三个容器也会跟着启动，无需我们手动去启动这三个容器了。
