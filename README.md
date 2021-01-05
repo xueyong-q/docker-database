@@ -52,6 +52,7 @@ $ docker network create database_app
 | MySQL      | 3306     |
 | Redis      | 6379     |
 | PHPMyAdmin | 8888     |  
+
 可通过访问主机的以上端口来访问对应的服务。
 
 由于以上容器设置了 restart 为 always，所以在每次 Docker 启动后这三个容器也会跟着启动，无需我们手动去启动这三个容器了。
